@@ -1,0 +1,30 @@
+{
+  "weapons": [
+    {
+      "name": "Затупленный нож",
+      "damege": 20,
+      "uses":  1
+        
+    }
+  ],
+  "food": [
+    {
+      "name": "Волчье мясо",
+      "heal_point": 15,
+      "encourage_point": 10,
+      "uses": 1
+    }
+  ],
+  "flowers": [
+    {
+      "name": "Жимолость",
+      "light_point": 15,
+      "uses": 1
+    },
+    {
+      "name": "Цветок солнца",
+      "light_point": 100,
+      "uses": 1
+    }
+  ]
+}

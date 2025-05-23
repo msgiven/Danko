@@ -1,0 +1,5 @@
+﻿  fight.cpp
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\fight.cpp(44,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating Code...
+  super_epic_game_Danko.vcxproj -> D:\C++Projects\super_epic_game_Danko\x64\Debug\super_epic_game_Danko.exe
