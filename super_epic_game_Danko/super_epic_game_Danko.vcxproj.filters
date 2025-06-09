@@ -15,13 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
+    <ClCompile Include="player.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fight.cpp">
+    <ClCompile Include="fight.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="item_factory.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
