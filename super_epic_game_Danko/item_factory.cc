@@ -7,13 +7,13 @@
 #include "item.h"
 ItemFactory::ItemFactory(const std::string& file_name) {
   std::ifstream file(file_name, std::ios::binary);
-  file >> data;
+  file >> data_;
 }
 
 std::shared_ptr<Item> ItemFactory::GenerateItem(ItemID id) {
   std::string name = ItemIDToString(id);
 
-  nlohmann::json item_data = data[name];
+  nlohmann::json item_data = data_[name];
   std::variant<std::monostate, Food, Weapon, Flower> stats;
 
   std::string type = item_data["type"];

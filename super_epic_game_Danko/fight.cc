@@ -1,7 +1,9 @@
 ﻿#include "fight.h"
 
+#include <Windows.h>
 #include <conio.h>
-#include <windows.h>
+#include <fcntl.h>
+#include <io.h>
 
 #include <algorithm>
 #include <chrono>
@@ -10,6 +12,7 @@
 #include <iostream>
 #include <thread>
 
+#include "global_void.h"
 bool isKeyPressed() {
 #ifdef _WIN32
   return _kbhit() != 0;
@@ -42,8 +45,10 @@ char getKeyPress() {
 #endif
 }
 
-Fight::Fight(int damage, int time_limit)
-    : damage_per_mistake_(damage), time_limit_sec_(time_limit) {
+Fight::Fight(int player_damage, int enemy_damage, int time_limit)
+    : player_damage_(player_damage),
+      enemy_damage_(enemy_damage),
+      time_limit_sec_(time_limit) {
   srand(time(nullptr));
 }
 
@@ -56,9 +61,9 @@ void Fight::GenerateRandomSequence() {
 }
 
 void Fight::ChooseAttackType(Player& player) {
-  std::cout << "Выберите тип атаки:\n"
-            << "1 - Обычная атака\n"
-            << "2 - Атака энергией солнца\n";
+  Print("Выберите тип атаки:");
+  std::cout << "1 - Обычная атака" << std::endl;
+  std::cout << "2 - Атака энергией солнца" << std::endl;
 
   while (true) {
     char input = _getch();
@@ -76,7 +81,7 @@ void Fight::ChooseAttackType(Player& player) {
 }
 
 void Fight::DisplaySequence() const {
-  std::cout << "Введите последовательность стрелок:" << std::endl;
+  std::cout << "Введите последовательность стрелок:";
   for (Arrow arrow : sequence) {
     switch (arrow) {
       case UP:
@@ -100,14 +105,14 @@ void Fight::DisplaySequence() const {
 
 std::vector<Arrow> Fight::GetPlayerInput() {
   std::vector<Arrow> player_input;
-  std::cout << "У вас есть " << time_limit_sec_ << " секунд(ы)!" << std::endl;
-  std::cout << "Введите последовательность (W, S, A, D): ";
+
+  // Print("Введите последовательность (W, S, A, D): ");
 
   auto startTime = std::chrono::steady_clock::now();
   while (player_input.size() < 4) {
     if (std::chrono::steady_clock::now() - startTime >
         std::chrono::seconds(time_limit_sec_)) {
-      std::cout << "\nВремя вышло!" << std::endl;
+      std::cout << "Время вышло!" << std::endl;
       break;
     }
 
@@ -141,8 +146,8 @@ std::vector<Arrow> Fight::GetPlayerInput() {
   return player_input;
 }
 
-int Fight::CalculateDamage(const std::vector<Arrow>& playerInput) const {
-  if (playerInput.size() != 4) return damage_per_mistake_ * 4;
+int Fight::CalculatePlayerDamage(const std::vector<Arrow>& playerInput) const {
+  if (playerInput.size() != 4) return enemy_damage_ * 4;
 
   int mistakes = 0;
   for (int i = 0; i < 4; ++i) {
@@ -150,10 +155,23 @@ int Fight::CalculateDamage(const std::vector<Arrow>& playerInput) const {
       mistakes++;
     }
   }
-  return mistakes * damage_per_mistake_;
+  return mistakes * enemy_damage_;
 }
 
-bool Fight::PlayRound(Player& player) {
+int Fight::CalculateEnemyDamage(const std::vector<Arrow>& playerInput) const {
+  if (playerInput.size() != 4) return player_damage_ * 4;
+
+  int mistakes = 0;
+  for (int i = 0; i < 4; ++i) {
+    if (playerInput[i] != sequence[i]) {
+      mistakes++;
+    }
+  }
+  return mistakes * player_damage_;
+}
+
+bool Fight::PlayRound(Player& player, Enemy& enemy) {
+  std::cout << "\n=== ВАШ ХОД ===" << std::endl;
   GenerateRandomSequence();
 
   int delay = rand() % 3 + 1;
@@ -163,18 +181,39 @@ bool Fight::PlayRound(Player& player) {
 
   std::vector<Arrow> playerInput = GetPlayerInput();
 
-  int damage = CalculateDamage(playerInput);
+  int damage = CalculateEnemyDamage(playerInput);
+  enemy.TakeDamage(enemy.GetMaxHealth() - damage);
+
+  std::cout << "\nВы нанесли " << enemy.GetMaxHealth() - damage << " урона!"
+            << std::endl;
+  std::cout << "\nОставшееся здоровье врага: " << enemy.GetHealth() << "/"
+            << enemy.GetMaxHealth() << std::endl;
+  std::cout << "Оставшееся энергия солнца: " << player.GetSunEnergy() << "/"
+            << player.GetMaxSunEnergy() << std::endl;
+  return enemy.IsAlive();
+}
+
+bool Fight::PlayRound(Player& player) {
+  std::cout << "\n=== ХОД ВРАГА ===" << std::endl;
+  GenerateRandomSequence();
+  int delay = rand() % 3 + 1;
+  std::this_thread::sleep_for(std::chrono::seconds(delay));
+  DisplaySequence();
+
+  std::vector<Arrow> playerInput = GetPlayerInput();
+
+  int damage = CalculatePlayerDamage(playerInput);
   player.TakeDamage(damage);
 
+  // std::cout << "\nВы нанесли " << 100 - damage << " урона!" << std::endl;
   if (damage == 0) {
     std::cout << "\nИдеально! Вы не получили урона." << std::endl;
   } else {
     std::cout << "\nВы получили " << damage << " урона!" << std::endl;
   }
 
-  std::cout << "Оставшееся здоровье: " << player.GetHealth() << "/"
+  std::cout << "Оставшееся здоровье игрока: " << player.GetHealth() << "/"
             << player.GetMaxHealth() << std::endl;
-  std::cout << "Оставшееся энергия: " << player.GetSunEnergy() << "/"
-            << player.GetMaxSunEnergy() << std::endl;
+
   return player.IsAlive();
 }

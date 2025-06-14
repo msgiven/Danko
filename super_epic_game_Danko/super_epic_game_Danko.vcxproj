@@ -131,22 +131,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="console_setter.cc" />
+    <ClCompile Include="enemy.cc" />
+    <ClCompile Include="enemy_factory.cc" />
     <ClCompile Include="fight.cc" />
+    <ClCompile Include="fight_manager.cc" />
     <ClCompile Include="item.cc" />
     <ClCompile Include="item_factory.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="player.cc" />
+    <ClCompile Include="quest.cpp" />
+    <ClCompile Include="quest_factory.cpp" />
+    <ClCompile Include="tribe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="global_void.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="enemy_factory.h" />
     <ClInclude Include="fight.h" />
+    <ClInclude Include="fight_manager.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="item_factory.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="quest.h" />
+    <ClInclude Include="quest_factory.h" />
+    <ClInclude Include="tribe.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="enemies.json" />
     <None Include="items.json" />
+    <None Include="quests.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

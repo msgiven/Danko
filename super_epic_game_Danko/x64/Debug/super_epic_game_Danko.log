@@ -1,2 +1,7 @@
 ﻿  main.cc
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\quest.h(1,1): warning C4828: The file contains a character starting at offset 0x14d that is illegal in the current source character set (codepage 65001).
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\quest.h(1,1): warning C4828: The file contains a character starting at offset 0x151 that is illegal in the current source character set (codepage 65001).
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\quest.h(1,1): warning C4828: The file contains a character starting at offset 0x155 that is illegal in the current source character set (codepage 65001).
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\quest.h(1,1): warning C4828: The file contains a character starting at offset 0x158 that is illegal in the current source character set (codepage 65001).
+D:\C++Projects\super_epic_game_Danko\super_epic_game_Danko\quest.h(1,1): warning C4828: The file contains a character starting at offset 0x15b that is illegal in the current source character set (codepage 65001).
   super_epic_game_Danko.vcxproj -> D:\C++Projects\super_epic_game_Danko\x64\Debug\super_epic_game_Danko.exe

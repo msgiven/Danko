@@ -10,7 +10,7 @@ class ItemFactory {
   std::shared_ptr<Item> GenerateItem(ItemID id);
 
  private:
-  nlohmann::json data;
+  nlohmann::json data_;
   const std::string ItemIDToString(ItemID id);
 };
 #endif

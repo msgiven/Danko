@@ -30,6 +30,27 @@
     <ClCompile Include="item_factory.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="enemy.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy_factory.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fight_manager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="console_setter.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tribe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quest_factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -47,9 +68,31 @@
     <ClInclude Include="item_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fight_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global_void.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tribe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quest_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="items.json" />
     <None Include="enemies.json" />
+    <None Include="quests.json" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,8 @@
 #define PLAYER_H_
 #include <memory>
 #include <unordered_map>
-
+#include<vector>
+#include "quest.h"
 #include "item.h"
 enum Arrow { UP, DOWN, LEFT, RIGHT };
 
@@ -20,13 +21,13 @@ class Player {
   int GetMaxSunEnergy() const;
   int GetMaxHealth() const;
 
-
  private:
   int health_;
   int sun_energy_;
-  int max_sun_energy_;
-  int max_health_;
+  const int max_sun_energy_;
+  const int max_health_;
   Item item_;
+
   std::unordered_map<ItemID, std::pair<std::shared_ptr<Item>, int>> items;
 };
 
