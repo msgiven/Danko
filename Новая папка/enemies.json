@@ -1,0 +1,20 @@
+﻿{
+  "Savage": {
+    "display_name": "дикарь",
+    "health": 1,
+    "damage": 15,
+    "loot_chance": 0.3
+  },
+  "Boar": {
+    "display_name": "кабан",
+    "health": 90,
+    "damage": 10,
+    "loot_chance": 0.6
+  },
+  "Shadow": {
+    "display_name": "Тень",
+    "health": 100,
+    "damage": 10,
+    "loot_chance": 0.6
+  }
+}

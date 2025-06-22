@@ -1,0 +1,27 @@
+﻿{
+  "knife": {
+    "type": "weapon",
+    "display_name": "Нож",
+    "damage": 5,
+    "durability": 30,
+    "light_point": 5
+  },
+  "boar_meat": {
+    "type": "food",
+    "display_name": "Кабанье мясо",
+    "heal_point": 15,
+    "encourage_point": 10
+  },
+  "honeysuckle": {
+    "type": "flower",
+    "display_name": "Жимолость",
+    "light_point": 15,
+    "encourage_point": 20
+  },
+  "sunflower": {
+    "type": "flower",
+    "display_name": "Цветок солнца",
+    "light_point": 100,
+    "encourage_point": 40
+  }
+}
